@@ -35,7 +35,7 @@ export interface SalesTransaction {
   product?: Product;
 }
 
-export interface Product {
+interface Product {
   id: number;
   name: string;
   description: string;
