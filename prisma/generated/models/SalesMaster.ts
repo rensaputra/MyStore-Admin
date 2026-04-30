@@ -458,6 +458,7 @@ export type SalesMasterCreateOrConnectWithoutBuyerInput = {
 
 export type SalesMasterCreateManyBuyerInputEnvelope = {
   data: Prisma.SalesMasterCreateManyBuyerInput | Prisma.SalesMasterCreateManyBuyerInput[]
+  skipDuplicates?: boolean
 }
 
 export type SalesMasterUpsertWithWhereUniqueWithoutBuyerInput = {
@@ -1322,6 +1323,7 @@ export type SalesMasterCreateManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * The data used to create many SalesMasters.
    */
   data: Prisma.SalesMasterCreateManyInput | Prisma.SalesMasterCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1340,6 +1342,7 @@ export type SalesMasterCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    * The data used to create many SalesMasters.
    */
   data: Prisma.SalesMasterCreateManyInput | Prisma.SalesMasterCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

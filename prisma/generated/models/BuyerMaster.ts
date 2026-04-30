@@ -1229,6 +1229,7 @@ export type BuyerMasterCreateManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * The data used to create many BuyerMasters.
    */
   data: Prisma.BuyerMasterCreateManyInput | Prisma.BuyerMasterCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1247,6 +1248,7 @@ export type BuyerMasterCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    * The data used to create many BuyerMasters.
    */
   data: Prisma.BuyerMasterCreateManyInput | Prisma.BuyerMasterCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**

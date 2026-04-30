@@ -236,8 +236,8 @@ export type SalesTransactionWhereInput = {
   unitPrice?: Prisma.FloatFilter<"SalesTransaction"> | number
   qtyPurchased?: Prisma.IntFilter<"SalesTransaction"> | number
   total?: Prisma.FloatFilter<"SalesTransaction"> | number
-  salesMaster?: Prisma.XOR<Prisma.SalesMasterScalarRelationFilter, Prisma.SalesMasterWhereInput>
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
+  salesMaster?: Prisma.XOR<Prisma.SalesMasterScalarRelationFilter, Prisma.SalesMasterWhereInput>
 }
 
 export type SalesTransactionOrderByWithRelationInput = {
@@ -247,8 +247,8 @@ export type SalesTransactionOrderByWithRelationInput = {
   unitPrice?: Prisma.SortOrder
   qtyPurchased?: Prisma.SortOrder
   total?: Prisma.SortOrder
-  salesMaster?: Prisma.SalesMasterOrderByWithRelationInput
   product?: Prisma.ProductOrderByWithRelationInput
+  salesMaster?: Prisma.SalesMasterOrderByWithRelationInput
 }
 
 export type SalesTransactionWhereUniqueInput = Prisma.AtLeast<{
@@ -261,8 +261,8 @@ export type SalesTransactionWhereUniqueInput = Prisma.AtLeast<{
   unitPrice?: Prisma.FloatFilter<"SalesTransaction"> | number
   qtyPurchased?: Prisma.IntFilter<"SalesTransaction"> | number
   total?: Prisma.FloatFilter<"SalesTransaction"> | number
-  salesMaster?: Prisma.XOR<Prisma.SalesMasterScalarRelationFilter, Prisma.SalesMasterWhereInput>
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
+  salesMaster?: Prisma.XOR<Prisma.SalesMasterScalarRelationFilter, Prisma.SalesMasterWhereInput>
 }, "id">
 
 export type SalesTransactionOrderByWithAggregationInput = {
@@ -296,8 +296,8 @@ export type SalesTransactionCreateInput = {
   unitPrice: number
   qtyPurchased: number
   total: number
-  salesMaster: Prisma.SalesMasterCreateNestedOneWithoutSalesTransactionsInput
   product: Prisma.ProductCreateNestedOneWithoutSalesTransactionsInput
+  salesMaster: Prisma.SalesMasterCreateNestedOneWithoutSalesTransactionsInput
 }
 
 export type SalesTransactionUncheckedCreateInput = {
@@ -314,8 +314,8 @@ export type SalesTransactionUpdateInput = {
   unitPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   qtyPurchased?: Prisma.IntFieldUpdateOperationsInput | number
   total?: Prisma.FloatFieldUpdateOperationsInput | number
-  salesMaster?: Prisma.SalesMasterUpdateOneRequiredWithoutSalesTransactionsNestedInput
   product?: Prisma.ProductUpdateOneRequiredWithoutSalesTransactionsNestedInput
+  salesMaster?: Prisma.SalesMasterUpdateOneRequiredWithoutSalesTransactionsNestedInput
 }
 
 export type SalesTransactionUncheckedUpdateInput = {
@@ -510,6 +510,7 @@ export type SalesTransactionCreateOrConnectWithoutProductInput = {
 
 export type SalesTransactionCreateManyProductInputEnvelope = {
   data: Prisma.SalesTransactionCreateManyProductInput | Prisma.SalesTransactionCreateManyProductInput[]
+  skipDuplicates?: boolean
 }
 
 export type SalesTransactionUpsertWithWhereUniqueWithoutProductInput = {
@@ -563,6 +564,7 @@ export type SalesTransactionCreateOrConnectWithoutSalesMasterInput = {
 
 export type SalesTransactionCreateManySalesMasterInputEnvelope = {
   data: Prisma.SalesTransactionCreateManySalesMasterInput | Prisma.SalesTransactionCreateManySalesMasterInput[]
+  skipDuplicates?: boolean
 }
 
 export type SalesTransactionUpsertWithWhereUniqueWithoutSalesMasterInput = {
@@ -654,8 +656,8 @@ export type SalesTransactionSelect<ExtArgs extends runtime.Types.Extensions.Inte
   unitPrice?: boolean
   qtyPurchased?: boolean
   total?: boolean
-  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["salesTransaction"]>
 
 export type SalesTransactionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -665,8 +667,8 @@ export type SalesTransactionSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   unitPrice?: boolean
   qtyPurchased?: boolean
   total?: boolean
-  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["salesTransaction"]>
 
 export type SalesTransactionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -676,8 +678,8 @@ export type SalesTransactionSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   unitPrice?: boolean
   qtyPurchased?: boolean
   total?: boolean
-  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["salesTransaction"]>
 
 export type SalesTransactionSelectScalar = {
@@ -691,23 +693,23 @@ export type SalesTransactionSelectScalar = {
 
 export type SalesTransactionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "SMOId" | "productId" | "unitPrice" | "qtyPurchased" | "total", ExtArgs["result"]["salesTransaction"]>
 export type SalesTransactionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
 }
 export type SalesTransactionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
 }
 export type SalesTransactionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  salesMaster?: boolean | Prisma.SalesMasterDefaultArgs<ExtArgs>
 }
 
 export type $SalesTransactionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "SalesTransaction"
   objects: {
-    salesMaster: Prisma.$SalesMasterPayload<ExtArgs>
     product: Prisma.$ProductPayload<ExtArgs>
+    salesMaster: Prisma.$SalesMasterPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1110,8 +1112,8 @@ readonly fields: SalesTransactionFieldRefs;
  */
 export interface Prisma__SalesTransactionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  salesMaster<T extends Prisma.SalesMasterDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SalesMasterDefaultArgs<ExtArgs>>): Prisma.Prisma__SalesMasterClient<runtime.Types.Result.GetResult<Prisma.$SalesMasterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  salesMaster<T extends Prisma.SalesMasterDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SalesMasterDefaultArgs<ExtArgs>>): Prisma.Prisma__SalesMasterClient<runtime.Types.Result.GetResult<Prisma.$SalesMasterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1381,6 +1383,7 @@ export type SalesTransactionCreateManyArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many SalesTransactions.
    */
   data: Prisma.SalesTransactionCreateManyInput | Prisma.SalesTransactionCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1399,6 +1402,7 @@ export type SalesTransactionCreateManyAndReturnArgs<ExtArgs extends runtime.Type
    * The data used to create many SalesTransactions.
    */
   data: Prisma.SalesTransactionCreateManyInput | Prisma.SalesTransactionCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

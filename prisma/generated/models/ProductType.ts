@@ -1069,6 +1069,7 @@ export type ProductTypeCreateManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * The data used to create many ProductTypes.
    */
   data: Prisma.ProductTypeCreateManyInput | Prisma.ProductTypeCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1087,6 +1088,7 @@ export type ProductTypeCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    * The data used to create many ProductTypes.
    */
   data: Prisma.ProductTypeCreateManyInput | Prisma.ProductTypeCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
