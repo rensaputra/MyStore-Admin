@@ -2,13 +2,9 @@
 
 import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
-import path from "path";
-import fs from "fs";
-import { writeFile } from "fs/promises";
 import { revalidatePath } from "next/cache";
 import { jwtTokenVerification } from "@/actions/authActions";
-
-const UPLOAD_DIR = path.resolve("public/uploads");
+import { put, del } from "@vercel/blob";
 
 export async function createProduct(formData: FormData) {
   await jwtTokenVerification();
@@ -48,18 +44,12 @@ export async function createProduct(formData: FormData) {
   let imagePath = "";
 
   if (file) {
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-    if (!fs.existsSync(UPLOAD_DIR)) {
-      fs.mkdirSync(UPLOAD_DIR, { recursive: true });
-    }
-
-    const fileName = Date.now() + path.extname(file.name);
-    imagePath = `/uploads/${fileName}`;
-
-    const fullPath = path.join(process.cwd(), "public", imagePath);
-    await writeFile(fullPath, buffer);
+    const fileName = `${Date.now()}-${file.name}`;
+    const blob = await put(fileName, file, {
+      access: "public",
+      addRandomSuffix: true,
+    });
+    imagePath = blob.url;
   }
 
   const totalStock =
@@ -146,18 +136,12 @@ export async function updateProduct(formData: FormData) {
   let imagePath = existingImage;
 
   if (file && file.size > 0) {
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-    if (!fs.existsSync(UPLOAD_DIR)) {
-      fs.mkdirSync(UPLOAD_DIR, { recursive: true });
-    }
-
-    const fileName = Date.now() + path.extname(file.name);
-    imagePath = `/uploads/${fileName}`;
-
-    const fullPath = path.join(process.cwd(), "public", imagePath);
-    await writeFile(fullPath, buffer);
+    const fileName = `${Date.now()}-${file.name}`;
+    const blob = await put(fileName, file, {
+      access: "public",
+      addRandomSuffix: true,
+    });
+    imagePath = blob.url;
   }
 
   const totalStock =
@@ -194,9 +178,10 @@ export async function handleDeleteImage(imagePath: string) {
   await jwtTokenVerification();
 
   if (imagePath) {
-    const existingImageFullPath = path.join(process.cwd(), "public", imagePath);
-    if (fs.existsSync(existingImageFullPath)) {
-      fs.unlinkSync(existingImageFullPath); // Delete the existing image file
+    try {
+      await del(imagePath);
+    } catch (error) {
+      console.error("Error deleting image from Vercel Blob:", error);
     }
   }
 }
